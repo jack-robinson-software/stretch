@@ -11,6 +11,7 @@ Thanks for helping make small movement breaks feel friendly. Stretch is the app;
    cd mac-app
    ./build.sh
    ./Stretch.app/Contents/MacOS/Stretch --self-test
+   ./Stretch.app/Contents/MacOS/Stretch --onboarding-self-test
    open Stretch.app
    ```
 
@@ -37,4 +38,4 @@ You can [buy Jack a coffee](https://www.buymeacoffee.com/jackrobinsonuk) if youâ
 
 ## Automated checks
 
-GitHub Actions builds the native app, runs its bundled self-test and verifies the ad-hoc signature on an Apple Silicon macOS runner. Before a pull request, run those same commands locally. See [the architecture guide](docs/ARCHITECTURE.md) for how the app fits together.
+GitHub Actions builds the native app, runs its bundled self-test and native onboarding checks, and verifies the ad-hoc signature on an Apple Silicon macOS runner. Before a pull request, run those same commands locally. See [the architecture guide](docs/ARCHITECTURE.md) for how the app fits together.

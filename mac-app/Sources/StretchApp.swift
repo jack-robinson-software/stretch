@@ -16,6 +16,8 @@ final class StretchApp: NSObject, NSApplicationDelegate {
     var nextNudge: Date?
     var sequence = 0
     var welcome: NSWindow?
+    var onboarding: OnboardingController?
+    var menuHint: NSPopover?
     var toggle: CompanionButton?
     var statusLabel: NSTextField?
     var intervalControl: NSSegmentedControl?
@@ -29,6 +31,11 @@ final class StretchApp: NSObject, NSApplicationDelegate {
         root.addSubview(character); root.addSubview(bubble); bubble.eyebrow.stringValue = companion.name.uppercased()
         character.progress = { [weak self] p in self?.bubble.progress.fraction = p }
         setUpMenu()
+        if CommandLine.arguments.contains("--onboarding-self-test") {
+            runOnboardingChecks(store: store)
+            NSApp.terminate(nil)
+            return
+        }
         NotificationCenter.default.addObserver(self,selector:#selector(reposition),name:NSApplication.didChangeScreenParametersNotification,object:nil)
         NSWorkspace.shared.notificationCenter.addObserver(self,selector:#selector(woke),name:NSWorkspace.didWakeNotification,object:nil)
         let timer = Timer(timeInterval: 15,repeats:true) { [weak self] _ in self?.tick() }; clock = timer; RunLoop.main.add(timer,forMode:.common)
@@ -38,10 +45,11 @@ final class StretchApp: NSObject, NSApplicationDelegate {
             captureDirectory = CommandLine.arguments[i+1]
             DispatchQueue.main.asyncAfter(deadline:.now()+0.5) { self.captureViews(); NSApp.terminate(nil) }; return
         }
-        if !preferences.defaults.bool(forKey:"hasMetPip") || CommandLine.arguments.contains("--welcome") {
-            preferences.defaults.set(true,forKey:"hasMetPip"); showSettings(nil)
+        if !preferences.hasCompletedOnboarding || CommandLine.arguments.contains("--welcome") || CommandLine.arguments.contains("--onboarding") {
+            showOnboarding(nil)
+        } else {
+            DispatchQueue.main.asyncAfter(deadline:.now()+0.55) { self.sayHello(nil) }
         }
-        DispatchQueue.main.asyncAfter(deadline:.now()+0.55) { self.sayHello(nil) }
     }
     func setUpMenu() {
         status = NSStatusBar.system.statusItem(withLength: NSStatusItem.squareLength)
@@ -59,6 +67,7 @@ final class StretchApp: NSObject, NSApplicationDelegate {
         add("Say hello",#selector(sayHello(_:))); add("Try a seated pause",#selector(trySeated)); add("Try a standing pause",#selector(tryStanding)); menu.addItem(.separator())
         add("Snooze for 15 minutes",#selector(snoozeMenu),enabled:preferences.enabled)
         add(preferences.enabled ? "Pause nudges" : "Turn on nudges",#selector(toggleReminders)); add("Settings…",#selector(showSettings(_:))); menu.addItem(.separator())
+        add("Replay introduction…",#selector(showOnboarding(_:)))
         add("Source code on GitHub…",#selector(openSource))
         if AppIdentity.supportURL != nil { add("Buy me a coffee…",#selector(openSupport)) }
         menu.addItem(.separator()); add("Quit \(AppIdentity.name)",#selector(quit))
@@ -131,6 +140,7 @@ final class StretchApp: NSObject, NSApplicationDelegate {
     }
     func scheduleNext() { nextNudge = Schedule.next(after:Date(),minutes:preferences.interval,hours:preferences.hours); updateSettings(); rebuildMenu() }
     func tick() {
+        if onboarding?.window?.isVisible == true { return }
         if preferences.enabled, let nextNudge, Date() >= nextNudge {
             if session.phase == .hidden && preferences.hours.permits(Date()) { sayHello(nil) }
             scheduleNext()
@@ -146,10 +156,48 @@ final class StretchApp: NSObject, NSApplicationDelegate {
     @objc func openSource() { NSWorkspace.shared.open(AppIdentity.sourceURL) }
     @objc func openSupport() { if let url = AppIdentity.supportURL { NSWorkspace.shared.open(url) } }
     @objc func quit() { NSApp.terminate(nil) }
+    @objc func showOnboarding(_ sender: Any?) {
+        if let onboarding, onboarding.window?.isVisible == true { onboarding.present(); return }
+        welcome?.orderOut(nil)
+        sequence += 1
+        session.hide()
+        character.stop()
+        panel.orderOut(nil)
+        let controller = OnboardingController(store: store, companion: companion, preferences: preferences,
+            menuIcon: status.button?.image, revealMenuBar: { [weak self] in self?.showMenuHint() }) { [weak self] draft in
+                guard let self else { return }
+                self.preferences.completeOnboarding(draft)
+                self.menuHint?.close()
+                let finished = self.onboarding
+                DispatchQueue.main.async { [weak self] in
+                    if self?.onboarding === finished { self?.onboarding = nil }
+                }
+                if self.preferences.enabled {
+                    if draft != nil || self.nextNudge == nil || self.nextNudge! <= Date() { self.scheduleNext() }
+                } else { self.nextNudge = nil }
+                self.updateSettings()
+                self.rebuildMenu()
+                if draft != nil { self.sayHello(nil) }
+            }
+        onboarding = controller
+        controller.present()
+    }
+    func showMenuHint() {
+        guard let button = status.button else { return }
+        menuHint?.close()
+        let content = NSViewController()
+        content.view = OnboardingCanvas(frame: NSRect(x: 0, y: 0, width: 260, height: 104))
+        let title = label("This is Stretch.", font: serif(18)); title.frame = NSRect(x: 18, y: 61, width: 224, height: 26)
+        let detail = label("Say hello, snooze or open Settings.\nYou can find Pip here anytime.", font: .systemFont(ofSize: 12), color: Palette.muted); detail.frame = NSRect(x: 18, y: 15, width: 224, height: 40)
+        content.view.addSubview(title); content.view.addSubview(detail)
+        let hint = NSPopover(); hint.contentViewController = content; hint.behavior = .transient; hint.contentSize = content.view.frame.size
+        menuHint = hint
+        hint.show(relativeTo: button.bounds, of: button, preferredEdge: .minY)
+    }
     @objc func showSettings(_ sender: Any?) {
         if let welcome { welcome.makeKeyAndOrderFront(nil); NSApp.activate(ignoringOtherApps:true); return }
         let w = NSWindow(contentRect:NSRect(x:0,y:0,width:530,height:520),styleMask:[.titled,.closable,.miniaturizable,.fullSizeContentView],backing:.buffered,defer:false)
-        w.title = AppIdentity.name; w.titlebarAppearsTransparent = true; w.backgroundColor = Palette.paper; w.isReleasedWhenClosed = false
+        w.title = AppIdentity.name; w.appearance = NSAppearance(named: .aqua); w.titlebarAppearsTransparent = true; w.backgroundColor = Palette.paper; w.isReleasedWhenClosed = false
         let content = NSView(frame:NSRect(x:0,y:0,width:530,height:520)); w.contentView = content
         func put(_ text: String,_ frame: NSRect,_ font: NSFont,_ color: NSColor = Palette.cocoa) { let v = label(text,font:font,color:color); v.frame = frame; content.addSubview(v) }
         put("\(AppIdentity.name.uppercased()) • MEET \(companion.name.uppercased())",NSRect(x:34,y:435,width:310,height:15),.systemFont(ofSize:10,weight:.semibold),Palette.muted)
@@ -157,7 +205,7 @@ final class StretchApp: NSObject, NSApplicationDelegate {
         put("A wave, a stretch, then back to your day.\n\(companion.name) pops by quietly, on your terms.",NSRect(x:34,y:289,width:320,height:45),.systemFont(ofSize:14),Palette.muted)
         let hero = NSImageView(frame:NSRect(x:370,y:315,width:118,height:142)); if let cg = store.image(.idle,0) { hero.image = NSImage(cgImage:cg,size:NSSize(width:300,height:360)) }; hero.imageScaling = .scaleProportionallyUpOrDown; content.addSubview(hero)
         let hello = CompanionButton("Say hello",style:.primary,target:self,action:#selector(sayHello(_:))); hello.frame = NSRect(x:34,y:235,width:139,height:37); content.addSubview(hello)
-        let seated = CompanionButton("Try a seated pause",target:self,action:#selector(trySeated)); seated.frame = NSRect(x:184,y:235,width:151,height:37); content.addSubview(seated)
+        let seated = CompanionButton("Replay introduction",target:self,action:#selector(showOnboarding(_:))); seated.frame = NSRect(x:184,y:235,width:151,height:37); content.addSubview(seated)
         let line = NSBox(frame:NSRect(x:34,y:214,width:462,height:1)); line.boxType = .separator; content.addSubview(line)
         put("Your rhythm",NSRect(x:34,y:174,width:200,height:25),serif(19))
         put("A little nudge every",NSRect(x:34,y:139,width:175,height:20),.systemFont(ofSize:13),Palette.muted)
@@ -183,6 +231,9 @@ final class StretchApp: NSObject, NSApplicationDelegate {
         }
         showSettings(nil)
         if let view = welcome?.contentView, let rep = view.bitmapImageRepForCachingDisplay(in:view.bounds) { view.cacheDisplay(in:view.bounds,to:rep); if let data = rep.representation(using:.png,properties:[:]) { try? data.write(to:URL(fileURLWithPath:directory).appendingPathComponent("settings.png")) } }
+        let intro = OnboardingController(store: store, companion: companion, preferences: preferences,
+            menuIcon: status.button?.image, revealMenuBar: {}, completed: { _ in })
+        intro.capture(to: URL(fileURLWithPath: directory))
         print("CAPTURED NATIVE VIEWS",directory)
     }
 }

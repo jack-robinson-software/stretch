@@ -1,8 +1,22 @@
 # Stretch — native Mac prototype
 
-Run `./build.sh`, then open `Stretch.app`. Stretch lives in the menu bar and appears in a small transparent panel at the top right of the screen. The welcome window contains the reminder settings and a way to try him immediately.
+Run `./build.sh`, then open `Stretch.app`. Stretch lives in the menu bar and appears in a small transparent panel at the top right of the screen. A short, optional first-run introduction welcomes new users. Reminder settings remain available separately from the menu bar.
 
 Stretch is the app; Pip is its first character. The prototype currently includes Pip only. His character assets retain the Pip name. Existing Pip prototype preferences migrate to Stretch on first launch.
+
+## First launch
+
+The introduction has four steps: meet Pip, try a seated or standing pause, choose a rhythm, and find the menu-bar icon. Trials use the actual character clips and player. **Show me where** points at the real menu-bar item.
+
+Reminder choices stay in a draft until **Let’s begin**. **Skip introduction**, Escape or closing the window dismisses it without changing saved reminder settings. A completed or dismissed introduction does not repeat automatically; existing prototype users are not forced through it. Replay is available in Settings and the menu bar.
+
+For a manual replay without resetting preferences:
+
+```sh
+open -n Stretch.app --args --onboarding
+```
+
+See [the onboarding guide](../docs/ONBOARDING.md) for the flow and storage behaviour.
 
 ## Try it
 
@@ -43,7 +57,7 @@ Distribution signing/notarization, launch at login, a polished application icon,
 
 ## Validation
 
-Run the bundled self-test after building. It checks reminder boundaries, defaults, state transitions and packaged animation resources. GitHub Actions runs the build, self-test and signature verification on every push and pull request.
+Run the bundled self-test after building. It checks reminder boundaries, defaults, state transitions, onboarding consent/migration and packaged animation resources. `--onboarding-self-test` also exercises the native introduction controls with isolated test preferences. GitHub Actions runs both checks and signature verification on every push and pull request.
 
 For manual review, try both movement flows, dismissal, snooze, reminder settings and menu links. Check that the companion does not take keyboard focus, clicks outside the bubble pass through, and the panel positions correctly on your display setup. Reduced-motion, keyboard and accessibility behaviour need further development; see [the roadmap](../docs/ROADMAP.md).
 

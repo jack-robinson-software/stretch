@@ -6,12 +6,13 @@ Stretch is an early prototype. This is a direction for discussion, not a release
 
 - Native Mac menu-bar app and a transparent companion panel.
 - Optional timed nudges, daily working hours and snooze.
+- A skippable first-run introduction with real movement trials and menu-bar guidance.
 - Pip’s standing, seated and breathing movements.
 - Editable character sources and a browser interaction demo.
 
 ## Next improvements
 
-- A signed, notarised download and a simpler first-run experience.
+- A signed, notarised download.
 - Launch at login and custom working days/hours.
 - More complete keyboard, accessibility and reduced-motion support.
 - Better transitions between seated and standing states.

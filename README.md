@@ -28,7 +28,9 @@ cd stretch/mac-app
 open Stretch.app
 ```
 
-Nudges start **off**. Choose **Say hello** to meet Pip, then enable gentle nudges in Settings whenever you’re ready. No account or subscription is needed.
+On first launch, a short introduction lets you **meet Pip → try a pause → choose your rhythm → find Stretch in the menu bar**. Nudges start **off**, and you can skip the introduction at any point. No account or subscription is needed.
+
+Replay it from **Settings → Replay introduction** or the menu bar’s **Replay introduction…**. [More about first launch](docs/ONBOARDING.md).
 
 This is a source-build prototype; a signed, notarised download is not available yet. The repository includes the full character asset library, so the initial clone is approximately 700 MB.
 

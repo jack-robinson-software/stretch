@@ -80,3 +80,35 @@ final class Preferences {
     var interval: Int { get { defaults.integer(forKey: "interval") } set { defaults.set(newValue, forKey: "interval") } }
     var hours: WorkHours { get { WorkHours(rawValue: defaults.string(forKey: "workHours") ?? "") ?? .nineToSix } set { defaults.set(newValue.rawValue, forKey: "workHours") } }
 }
+
+struct ReminderDraft {
+    var enabled: Bool
+    var interval: Int
+    var hours: WorkHours
+    init(preferences: Preferences) {
+        enabled = preferences.enabled
+        interval = preferences.interval
+        hours = preferences.hours
+    }
+}
+
+extension Preferences {
+    var hasCompletedOnboarding: Bool {
+        get {
+            if defaults.object(forKey: "onboardingCompleted") != nil {
+                return defaults.bool(forKey: "onboardingCompleted")
+            }
+            // People who already met Pip keep their existing first-run experience.
+            return defaults.bool(forKey: "hasMetPip")
+        }
+        set { defaults.set(newValue, forKey: "onboardingCompleted") }
+    }
+    func completeOnboarding(_ draft: ReminderDraft?) {
+        if let draft {
+            enabled = draft.enabled
+            interval = draft.interval
+            hours = draft.hours
+        }
+        hasCompletedOnboarding = true
+    }
+}

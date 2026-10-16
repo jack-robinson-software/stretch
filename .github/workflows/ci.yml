@@ -29,5 +29,7 @@ jobs:
         run: ./mac-app/build.sh
       - name: Run bundled self-test
         run: ./mac-app/Stretch.app/Contents/MacOS/Stretch --self-test
+      - name: Check native onboarding controls
+        run: ./mac-app/Stretch.app/Contents/MacOS/Stretch --onboarding-self-test
       - name: Verify local signature
         run: codesign --verify --deep --strict mac-app/Stretch.app

@@ -9,6 +9,8 @@ Stretch is a small native AppKit app, compiled directly with `swiftc`. There is 
 | [`main.swift`](../mac-app/Sources/main.swift) | Application entry point and bundled self-test |
 | [`AppModel.swift`](../mac-app/Sources/AppModel.swift) | Product/character metadata, movement choices, session states, reminder scheduling and local preferences |
 | [`StretchApp.swift`](../mac-app/Sources/StretchApp.swift) | Menu bar, floating panel, settings window and interaction flow |
+| [`Onboarding.swift`](../mac-app/Sources/Onboarding.swift) | Four-step introduction, local reminder draft and real clip trials |
+| [`OnboardingChecks.swift`](../mac-app/Sources/OnboardingChecks.swift) | Opt-in native control self-test with isolated preferences |
 | [`AppViews.swift`](../mac-app/Sources/AppViews.swift) | Speech bubble, native buttons, progress indicator and transparent frame player |
 
 The normal flow is **hidden → invitation → movement → completion → leaving → hidden**. A person can dismiss an invitation or finish a movement early. “Another” cycles through movements of the same kind. Seated completion keeps Pip in the chair; standing completion plays a celebration and walk-off.
@@ -30,3 +32,7 @@ The bundle identifier is `dev.jackrobinsonsoftware.stretch.prototype`. `build.sh
 ## Optional support links
 
 The app always exposes its source repository. A donation menu item appears only when `StretchSupportURL` is configured. [`configure_support.py`](../scripts/configure_support.py) updates that setting, the README and GitHub funding configuration together. See [support setup](../SUPPORT.md).
+
+## First-run introduction
+
+The introduction is separate from Settings. Reminder choices are drafted locally and committed only on completion; skipping or closing records dismissal without changing settings. Automatic nudges wait while the introduction is visible. Old `hasMetPip` preferences count as an existing introduction, so returning prototype users are not forced through it. See [onboarding](ONBOARDING.md) for the flow and test commands.
