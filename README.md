@@ -2,6 +2,8 @@
 
 A small Mac app with a growing cast of companions. **Pip** is the first character: a warm, orange bean who appears at the top right of the screen with a gentle invitation to pause, stretch or breathe. Includes the native app prototype, the approved bean-shaped character, editable Blender files, standing and seated animation libraries, transparent renders, and an interactive browser preview.
 
+![Pip, Stretch’s first character](renders/Pip-neutral.png)
+
 ## Try the app
 
 On an Apple Silicon Mac with macOS 13+ and Apple Command Line Tools:
@@ -52,3 +54,17 @@ Primary identity reference: `references/pip-character-sheet.png`. Additional pos
 ## Seated movements
 
 `seated/Pip-seated-movements.blend` contains four chair-based loops: side reaches, gentle turns, shoulder rolls and seated breathing. `seated/Pip-seated-preview.mp4` shows them together. See `seated/README.md` for scene controls, individual clips and transparent exports.
+
+## Contributing
+
+Issues and pull requests are welcome. See [CONTRIBUTING.md](CONTRIBUTING.md) for setup, movement and character guidelines, and checks to run. Stretch is an early prototype; the first build targets Apple Silicon Macs.
+
+## Support
+
+<!-- support:start -->
+Enjoying Stretch? A star, a useful bug report or a contribution helps it grow. Donations are never required.
+<!-- support:end -->
+
+## Licence
+
+Stretch is released under the [MIT licence](LICENSE), including the source code and included character models, animations and renders. Contributions are welcome under the same licence.

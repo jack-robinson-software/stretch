@@ -58,7 +58,10 @@ final class StretchApp: NSObject, NSApplicationDelegate {
         add(statusText(),nil,enabled:false); menu.addItem(.separator())
         add("Say hello",#selector(sayHello(_:))); add("Try a seated pause",#selector(trySeated)); add("Try a standing pause",#selector(tryStanding)); menu.addItem(.separator())
         add("Snooze for 15 minutes",#selector(snoozeMenu),enabled:preferences.enabled)
-        add(preferences.enabled ? "Pause nudges" : "Turn on nudges",#selector(toggleReminders)); add("Settings…",#selector(showSettings(_:))); menu.addItem(.separator()); add("Quit \(AppIdentity.name)",#selector(quit))
+        add(preferences.enabled ? "Pause nudges" : "Turn on nudges",#selector(toggleReminders)); add("Settings…",#selector(showSettings(_:))); menu.addItem(.separator())
+        add("Source code on GitHub…",#selector(openSource))
+        if AppIdentity.supportURL != nil { add("Buy me a coffee…",#selector(openSupport)) }
+        menu.addItem(.separator()); add("Quit \(AppIdentity.name)",#selector(quit))
         status.menu = menu
     }
     func statusText() -> String {
@@ -140,6 +143,8 @@ final class StretchApp: NSObject, NSApplicationDelegate {
     }
     @objc func intervalChanged(_ sender: NSSegmentedControl) { preferences.interval = [15,30,45,60][max(0,sender.selectedSegment)]; if preferences.enabled { scheduleNext() }; updateSettings() }
     @objc func hoursChanged(_ sender: NSPopUpButton) { preferences.hours = WorkHours.allCases[max(0,sender.indexOfSelectedItem)]; if preferences.enabled { scheduleNext() } }
+    @objc func openSource() { NSWorkspace.shared.open(AppIdentity.sourceURL) }
+    @objc func openSupport() { if let url = AppIdentity.supportURL { NSWorkspace.shared.open(url) } }
     @objc func quit() { NSApp.terminate(nil) }
     @objc func showSettings(_ sender: Any?) {
         if let welcome { welcome.makeKeyAndOrderFront(nil); NSApp.activate(ignoringOtherApps:true); return }

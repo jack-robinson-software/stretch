@@ -38,7 +38,7 @@ open Stretch.app
 
 ## Prototype scope
 
-This is a working local desktop prototype. Reminders use a timer and the chosen work hours; they do not yet detect idle time, calls, Focus modes or fullscreen presentations. Settings persist locally in UserDefaults. There are no accounts, network requests, AI calls, telemetry, or camera/microphone/screen permissions in Stretch. The app samples the pointer location while visible to make its transparent area click-through; it does not record input.
+This is a working local desktop prototype. Reminders use a timer and the chosen work hours; they do not yet detect idle time, calls, Focus modes or fullscreen presentations. Settings persist locally in UserDefaults. There are no accounts, background network requests, AI calls, telemetry, or camera/microphone/screen permissions in Stretch. The source-code link and optional donation link open in the default browser only when selected. The app samples the pointer location while visible to make its transparent area click-through; it does not record input.
 
 Distribution signing/notarization, launch at login, a polished application icon, a compact production animation format, custom working days and a rendered sit/stand transition are future product work. The inline preview demonstrates the controls but does not schedule OS reminders.
 
@@ -49,3 +49,7 @@ Distribution signing/notarization, launch at login, a polished application icon,
 - Native invitation, seated, standing and completion views: rendered and visually inspected.
 - Interactive demo: invitation, both movement types, another, completion, dismissal, settings and reminder toggle checked; desktop and 360px previews inspected with no console errors or missing images.
 - Native click-through/keyboard interaction has not been independently exercised with screen automation because macOS Computer Use permissions were pending. The app is launched for hands-on review.
+
+## Open source and support
+
+Stretch is MIT licensed. The menu includes a link to the source repository. The optional Buy Me a Coffee menu item is hidden until a real profile is configured; see [SUPPORT.md](../SUPPORT.md).

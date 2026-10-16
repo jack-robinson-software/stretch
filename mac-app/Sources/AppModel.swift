@@ -4,6 +4,14 @@ import Foundation
 enum AppIdentity {
     static let name = "Stretch"
     static let bundleIdentifier = "dev.jackrobinsonsoftware.stretch.prototype"
+    static let sourceURL = URL(string: "https://github.com/jack-robinson-software/stretch")!
+    static var supportURL: URL? {
+        guard let value = Bundle.main.object(forInfoDictionaryKey: "StretchSupportURL") as? String,
+              let url = URL(string: value), url.scheme == "https",
+              let host = url.host, ["buymeacoffee.com", "www.buymeacoffee.com"].contains(host),
+              url.path.count > 1 else { return nil }
+        return url
+    }
 }
 struct CompanionCharacter {
     let id: String
