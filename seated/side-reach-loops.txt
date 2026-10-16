@@ -1,2 +1,2 @@
-file '/Users/jackrobinson/Code/Pip-Rebuild/seated/Side-reaches/Pip-side-reaches.mp4'
-file '/Users/jackrobinson/Code/Pip-Rebuild/seated/Side-reaches/Pip-side-reaches.mp4'
+file 'Side-reaches/Pip-side-reaches.mp4'
+file 'Side-reaches/Pip-side-reaches.mp4'
