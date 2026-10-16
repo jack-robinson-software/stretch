@@ -1,12 +1,12 @@
 # Support Stretch
 
-A star, a useful bug report, a new movement idea or a contribution all help Stretch grow. Donations will always be optional.
+A star, a useful bug report, a new movement idea or a contribution all help Stretch grow. You can also [buy Jack a coffee](https://www.buymeacoffee.com/jackrobinsonuk). Donations are always optional.
 
 ## Maintainer setup: Buy Me a Coffee
 
-There is no donation account configured yet. No placeholder profile is published, and the app hides the donation menu item until a real profile URL is supplied.
+The current profile is **jackrobinsonuk**, linked from GitHub’s Sponsor button, the README and the app’s **Buy me a coffee…** menu item.
 
-Once the profile exists, run from the repository root:
+To change the profile, run from the repository root:
 
 ```sh
 python3 scripts/configure_support.py YOUR_BUY_ME_A_COFFEE_PROFILE_URL

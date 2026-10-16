@@ -24,5 +24,7 @@
 	<true/>
 	<key>NSPrincipalClass</key>
 	<string>NSApplication</string>
+	<key>StretchSupportURL</key>
+	<string>https://www.buymeacoffee.com/jackrobinsonuk</string>
 </dict>
 </plist>

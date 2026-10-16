@@ -49,4 +49,4 @@ For manual review, try both movement flows, dismissal, snooze, reminder settings
 
 ## Open source and support
 
-Stretch is MIT licensed. The menu includes a link to the source repository. The optional Buy Me a Coffee menu item is hidden until a real profile is configured; see [support setup](../SUPPORT.md).
+Stretch is MIT licensed. The menu includes a link to the source repository. The optional **Buy me a coffee…** menu item opens [Jack’s profile](https://www.buymeacoffee.com/jackrobinsonuk) in the default browser; see [support setup](../SUPPORT.md) to change the destination.

@@ -33,7 +33,7 @@ Open an issue with your macOS version, steps to reproduce, expected behaviour an
 
 ## Optional financial support
 
-Maintainers can enable Buy Me a Coffee using [the support setup guide](SUPPORT.md). Contributions and use of Stretch never require a donation.
+You can [buy Jack a coffee](https://www.buymeacoffee.com/jackrobinsonuk) if you’d like to support development. Contributions and use of Stretch never require a donation. Maintainers can update the link using [the support setup guide](SUPPORT.md).
 
 ## Automated checks
 

@@ -1,3 +1,1 @@
-# No donation profile is configured yet.
-# Run scripts/configure_support.py with the real Buy Me a Coffee profile URL.
-# This writes the buy_me_a_coffee username here and updates the app and README.
+buy_me_a_coffee: "jackrobinsonuk"

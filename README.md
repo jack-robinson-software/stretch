@@ -57,7 +57,7 @@ The prototype uses a timer and chosen working hours. Idle detection, call/Focus 
 Bug reports, thoughtful suggestions, movement ideas and new companions are welcome. Read the [contribution guide](CONTRIBUTING.md) for setup and checks, the [architecture guide](docs/ARCHITECTURE.md) for the code, or the [character guide](docs/CHARACTERS.md) for Pip’s assets.
 
 <!-- support:start -->
-Enjoying Stretch? A star, a useful bug report or a contribution helps it grow. Donations are never required.
+Enjoying Stretch? [Buy me a coffee](https://www.buymeacoffee.com/jackrobinsonuk) to help it grow. Donations are completely optional.
 <!-- support:end -->
 
 ## Licence
