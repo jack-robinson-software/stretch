@@ -1,5 +1,17 @@
 import Foundation
 
+// Product identity is independent of the companion character.
+enum AppIdentity {
+    static let name = "Stretch"
+    static let bundleIdentifier = "dev.jackrobinsonsoftware.stretch.prototype"
+}
+struct CompanionCharacter {
+    let id: String
+    let name: String
+    static let pip = CompanionCharacter(id: "pip", name: "Pip")
+}
+
+
 enum Clip: String, CaseIterable {
     case idle, wave, stretch, breathe, celebrate, walkOff, seatedReach, seatedTurn, seatedShoulders, seatedBreathe
     var frames: Int { switch self { case .idle: return 180; case .wave: return 120; case .stretch, .seatedReach: return 300; case .breathe, .seatedTurn, .seatedBreathe: return 240; case .celebrate: return 90; case .walkOff: return 165; case .seatedShoulders: return 180 } }
@@ -48,6 +60,12 @@ final class Preferences {
     let defaults: UserDefaults
     init(_ defaults: UserDefaults = .standard) {
         self.defaults = defaults
+        // Keep existing prototype preferences when moving to the product bundle ID.
+        if defaults === UserDefaults.standard,
+           defaults.persistentDomain(forName: AppIdentity.bundleIdentifier) == nil,
+           let legacy = defaults.persistentDomain(forName: "dev.pip.companion.prototype") {
+            defaults.setPersistentDomain(legacy, forName: AppIdentity.bundleIdentifier)
+        }
         defaults.register(defaults: ["remindersEnabled": false, "interval": 45, "workHours": WorkHours.nineToSix.rawValue])
     }
     var enabled: Bool { get { defaults.bool(forKey: "remindersEnabled") } set { defaults.set(newValue, forKey: "remindersEnabled") } }

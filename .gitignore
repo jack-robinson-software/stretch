@@ -5,8 +5,8 @@ __pycache__/
 *.log
 *.blend[0-9]
 .venv/
-mac-app/Pip.app/Contents/MacOS/
-mac-app/Pip.app/Contents/_CodeSignature/
+mac-app/Stretch.app/Contents/MacOS/
+mac-app/Stretch.app/Contents/_CodeSignature/
 # Local credentials and environment
 .env
 .env.*

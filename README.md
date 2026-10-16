@@ -1,6 +1,6 @@
-# Pip — a little pause
+# Stretch — a little pause
 
-A small Mac companion that appears at the top right of the screen with a gentle invitation to pause, stretch or breathe. Includes the native app prototype, the approved bean-shaped character, editable Blender files, standing and seated animation libraries, transparent renders, and an interactive browser preview.
+A small Mac app with a growing cast of companions. **Pip** is the first character: a warm, orange bean who appears at the top right of the screen with a gentle invitation to pause, stretch or breathe. Includes the native app prototype, the approved bean-shaped character, editable Blender files, standing and seated animation libraries, transparent renders, and an interactive browser preview.
 
 ## Try the app
 
@@ -9,13 +9,17 @@ On an Apple Silicon Mac with macOS 13+ and Apple Command Line Tools:
 ```sh
 cd mac-app
 ./build.sh
-./Pip.app/Contents/MacOS/Pip --self-test
-open Pip.app
+./Stretch.app/Contents/MacOS/Stretch --self-test
+open Stretch.app
 ```
 
 Automatic nudges start off. Use the menu-bar icon to try a seated or standing pause, snooze, or open Settings. See [the app README](mac-app/README.md) for controls and prototype scope.
 
 For the interactive browser demo, open `mac-app/preview.html`. All animation assets are included. To regenerate resized app or browser assets, install Pillow with `python3 -m pip install -r mac-app/requirements.txt`, then run `mac-app/package_assets.py` or `mac-app/make_web_assets.py`.
+
+## App and characters
+
+**Stretch** is the product. **Pip** is one of its characters. Product identity and character metadata are separate in the native app; the prototype currently includes Pip only. His Blender files and animation exports keep their character-specific names.
 
 ## Project layout
 

@@ -14,7 +14,7 @@ func selfTest() {
     expect(Schedule.next(after:date(10,0),minutes:45,hours:.nineToSix,calendar:calendar) == date(10,45),"normal interval")
     expect(Schedule.next(after:date(7,0),minutes:45,hours:.nineToSix,calendar:calendar) == date(9,0),"before working hours")
     expect(calendar.component(.day,from:Schedule.next(after:date(17,50),minutes:45,hours:.nineToSix,calendar:calendar)) == 17,"evening waits until tomorrow")
-    let suite = "dev.pip.prototype.tests.\(UUID().uuidString)"; let defaults = UserDefaults(suiteName:suite)!; let prefs = Preferences(defaults); expect(!prefs.enabled,"automatic reminders opt in"); defaults.removePersistentDomain(forName:suite)
+    let suite = "dev.jackrobinsonsoftware.stretch.tests.\(UUID().uuidString)"; let defaults = UserDefaults(suiteName:suite)!; let prefs = Preferences(defaults); expect(!prefs.enabled,"automatic reminders opt in"); defaults.removePersistentDomain(forName:suite)
     guard let root = Bundle.main.resourceURL else { print("Missing resources"); exit(1) }
     for clip in Clip.allCases {
         let folder = root.appendingPathComponent("Clips/\(clip.rawValue)")
@@ -27,7 +27,7 @@ func selfTest() {
 }
 if CommandLine.arguments.contains("--self-test") { selfTest() } else {
     let app = NSApplication.shared
-    let delegate = PipApp(resources:Bundle.main.resourceURL!)
+    let delegate = StretchApp(resources:Bundle.main.resourceURL!)
     app.delegate = delegate
     app.run()
 }

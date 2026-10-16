@@ -6,7 +6,7 @@ clips=['idle','wave','stretch','breathe','celebrate','seatedReach','seatedTurn',
 def export(name):
  target=out/(name+'.webp')
  if target.exists():return
- files=sorted((B/'Pip.app/Contents/Resources/Clips'/name).glob('*.png'))
+ files=sorted((B/'Stretch.app/Contents/Resources/Clips'/name).glob('*.png'))
  frames=[]
  for p in files:
   with Image.open(p) as im:frames.append(im.resize((200,240),Image.Resampling.LANCZOS))

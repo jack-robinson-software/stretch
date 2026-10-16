@@ -18,7 +18,7 @@ func label(_ text: String, font: NSFont, color: NSColor = Palette.cocoa) -> NSTe
 }
 func serif(_ size: CGFloat) -> NSFont { NSFont(name: "Georgia", size: size) ?? .systemFont(ofSize: size, weight: .medium) }
 
-final class PipButton: NSButton {
+final class CompanionButton: NSButton {
     enum Style { case primary, secondary, text }
     var style: Style = .secondary
     private var hovering = false
@@ -60,16 +60,16 @@ final class ProgressLine: NSView {
 final class SpeechBubble: NSView {
     let heading = label("Fancy a little stretch?", font: serif(18))
     let detail = label("Take a moment, your way.", font: .systemFont(ofSize: 12.5), color: Palette.muted)
-    let eyebrow = label("PIP", font: .systemFont(ofSize: 10, weight: .semibold), color: Palette.muted)
+    let eyebrow = label(CompanionCharacter.pip.name.uppercased(), font: .systemFont(ofSize: 10, weight: .semibold), color: Palette.muted)
     let footer = label("", font: .systemFont(ofSize: 10), color: Palette.muted)
-    let first: PipButton
-    let second: PipButton
-    let later: PipButton
+    let first: CompanionButton
+    let second: CompanionButton
+    let later: CompanionButton
     let progress = ProgressLine()
     init(target: AnyObject, first: Selector, second: Selector, later: Selector) {
-        self.first = PipButton("Stay seated", style: .primary, target: target, action: first)
-        self.second = PipButton("Get moving", style: .secondary, target: target, action: second)
-        self.later = PipButton("Not now", style: .text, target: target, action: later)
+        self.first = CompanionButton("Stay seated", style: .primary, target: target, action: first)
+        self.second = CompanionButton("Get moving", style: .secondary, target: target, action: second)
+        self.later = CompanionButton("Not now", style: .text, target: target, action: later)
         super.init(frame: NSRect(x: 0, y: 58, width: 282, height: 192))
         for v in [eyebrow,heading,detail,self.first,self.second,self.later,progress,footer] { addSubview(v) }
         eyebrow.frame = NSRect(x: 28,y: 150,width: 222,height: 14)
