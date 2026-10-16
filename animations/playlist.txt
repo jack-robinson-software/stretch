@@ -1,7 +1,0 @@
-file 'Idle/Pip-idle.mp4'
-file 'Wave/Pip-wave.mp4'
-file 'Stretch/Pip-stretch.mp4'
-file 'Breathe/Pip-breathe.mp4'
-file 'Celebrate/Pip-celebrate.mp4'
-file 'Walk-off/Pip-walk-off.mp4'
-file 'Walk-back/Pip-walk-back.mp4'

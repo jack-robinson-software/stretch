@@ -1,0 +1,20 @@
+name: Idea or improvement
+description: Suggest a movement, companion or app improvement.
+body:
+  - type: dropdown
+    id: area
+    attributes:
+      label: What would you like to improve?
+      options:
+        - App experience
+        - Movement
+        - New companion
+        - Accessibility
+        - Other
+  - type: textarea
+    id: idea
+    attributes:
+      label: Tell us your idea
+      description: Who would it help, and how would it feel to use?
+    validations:
+      required: true

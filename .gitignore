@@ -11,3 +11,14 @@ mac-app/Stretch.app/Contents/_CodeSignature/
 .env
 .env.*
 !.env.example
+
+# Generated asset review and encoding intermediates
+animations/qa/
+seated/qa/
+mac-app/qa/
+animations/*/review/
+seated/*/review/
+animations/*/review-background.png
+seated/*/review-background.png
+animations/*.txt
+seated/*.txt

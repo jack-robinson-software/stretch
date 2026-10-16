@@ -1,6 +1,6 @@
 # Pip movement library
 
-Built in Blender 5.1.2 from the approved fresh bean model. The retired model and rig are not used.
+Pip’s seven standing and walking performances, authored in Blender 5.1.2.
 
 ## Open and play
 
@@ -34,7 +34,7 @@ The solid viewport uses material colours. Enable **Viewport Overlays → Extras*
 
 Motion is baked to editable control keys at 30 fps with linear interpolation between the dense keys. There are no external playback handlers. Materials are procedural; no external textures are needed. Each scene has independent objects and action data, so editing one performance does not change another. Timeline markers identify the principal poses.
 
-The source scripts are `../animate_pip.py`, `../render_motions.py`, `../assemble_motions.py` and `../encode_motions.py`.
+The source scripts are [`animate_pip.py`](../tools/blender/animate_pip.py), [`render_motions.py`](../tools/blender/render_motions.py), [`assemble_motions.py`](../tools/blender/assemble_motions.py) and [`encode_motions.py`](../tools/blender/encode_motions.py).
 
 ## Reference and limits
 

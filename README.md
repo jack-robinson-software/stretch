@@ -1,65 +1,60 @@
-# Stretch — a little pause
+<h1 align="center">Stretch</h1>
+<p align="center"><strong>A little pause. A little better.</strong></p>
+<p align="center">Gentle movement breaks, with a little company.</p>
+<p align="center">macOS 13+ · Apple Silicon · Early prototype · <a href="LICENSE">MIT licensed</a></p>
 
-A small Mac app with a growing cast of companions. **Pip** is the first character: a warm, orange bean who appears at the top right of the screen with a gentle invitation to pause, stretch or breathe. Includes the native app prototype, the approved bean-shaped character, editable Blender files, standing and seated animation libraries, transparent renders, and an interactive browser preview.
+<p align="center">
+  <img src="docs/images/stretch-companion.png" width="720" alt="Pip, an orange bean character, offers a little stretch with Stay seated, Get moving and Not now buttons.">
+</p>
 
-![Pip, Stretch’s first character](renders/Pip-neutral.png)
+Stretch lives in your Mac’s menu bar and pops by with a quiet invitation to stretch or breathe. Stay in your chair, get up for a moment, or tell it “not now”. A small pause, then back to your day.
 
-## Try the app
+Meet **Pip**, our first companion. Stretch is the app; Pip is one character in a cast we’d love to grow.
 
-On an Apple Silicon Mac with macOS 13+ and Apple Command Line Tools:
+- **Stay seated or get moving.** Gentle reaches, turns, shoulder rolls and breathing, with seated and standing options.
+- **Set your own rhythm.** Optional nudges every 15, 30, 45 or 60 minutes, with working hours and a 15-minute snooze.
+- **Keep your focus.** Silent reminders and a transparent companion panel that appears without taking keyboard focus.
+- **Make it your own.** Native Swift/AppKit source, editable Blender models and the complete animation library are included.
+
+## Try Stretch
+
+You’ll need an **Apple Silicon Mac**, **macOS 13 or later**, and **Apple Command Line Tools** (`xcode-select --install` if needed).
 
 ```sh
-cd mac-app
+git clone --depth 1 https://github.com/jack-robinson-software/stretch.git
+cd stretch/mac-app
 ./build.sh
 ./Stretch.app/Contents/MacOS/Stretch --self-test
 open Stretch.app
 ```
 
-Automatic nudges start off. Use the menu-bar icon to try a seated or standing pause, snooze, or open Settings. See [the app README](mac-app/README.md) for controls and prototype scope.
+Nudges start **off**. Choose **Say hello** to meet Pip, then enable gentle nudges in Settings whenever you’re ready. No account or subscription is needed.
 
-For the interactive browser demo, open `mac-app/preview.html`. All animation assets are included. To regenerate resized app or browser assets, install Pillow with `python3 -m pip install -r mac-app/requirements.txt`, then run `mac-app/package_assets.py` or `mac-app/make_web_assets.py`.
+This is a source-build prototype; a signed, notarised download is not available yet. The repository includes the full character asset library, so the initial clone is approximately 700 MB.
 
-## App and characters
+**Just want a look?** Open [`mac-app/preview.html`](mac-app/preview.html) from your checkout in a browser. The interactive demo shows the flow; desktop reminders run in the Mac app.
 
-**Stretch** is the product. **Pip** is one of its characters. Product identity and character metadata are separate in the native app; the prototype currently includes Pip only. His Blender files and animation exports keep their character-specific names.
+## What’s here
 
-## Project layout
+| Area | What you’ll find |
+| --- | --- |
+| [`mac-app/`](mac-app/) | Native app, build instructions, packaged animation frames and browser preview |
+| [`model/`](model/) | Pip’s editable neutral Blender model |
+| [`animations/`](animations/) | Standing and walking scenes, transparent frames and video previews |
+| [`seated/`](seated/) | Chair-based movements, editable scenes and exports |
+| [`tools/blender/`](tools/blender/) | Model generation, animation, rendering and validation scripts |
+| [`docs/`](docs/) | Architecture, character workflow and project roadmap |
+| [`references/`](references/) · [`renders/`](renders/) | Design references and neutral character renders |
 
-- `mac-app/`: native AppKit application, transparent playback assets and browser preview.
-- `model/`: editable approved neutral character.
-- `animations/`: seven standing and walking movements, Blender scenes, MP4s and transparent PNG sequences.
-- `seated/`: four chair-based movements, Blender scenes, MP4s and transparent PNG sequences.
-- `references/` and `renders/`: character references and approved neutral renders.
-- Root Python scripts: model generation, animation authoring, rendering and validation.
+## Small, quiet and local
 
-The project contains the complete approved asset library; generated caches, build logs, Blender backups and local app executables/signatures are excluded from version control.
+Stretch has no accounts, telemetry, AI calls or background network requests. Settings stay on your Mac. It does not use your camera, microphone or screen recording. Source and optional donation links open in your browser only when selected.
 
-## Review files
+The prototype uses a timer and chosen working hours. Idle detection, call/Focus awareness, launch at login and a character picker are future work. See the [roadmap](docs/ROADMAP.md) and [app guide](mac-app/README.md) for the current scope.
 
-- `model/Pip.blend` — editable neutral model with studio camera and lighting.
-- `renders/Pip-neutral.png` — neutral three-quarter preview.
-- `renders/Pip-front.png` and `renders/Pip-side.png` — proportion and silhouette checks.
-- `renders/Pip-neutral-alpha.png` — transparent version of the neutral preview.
+## Help Stretch grow
 
-The body is an elongated bean with rounded ends, a restrained belly and a broad gentle bend through the waist. It is a smooth quad mesh with subdivision and shallow clay displacement. Arms and legs are editable Bezier curves. Hands and feet are separate meshes. The body, face and limbs are grouped under `Pip • placement` for moving the whole character. Materials are procedural, so the model has no external texture dependencies.
-
-The neutral design is approved. The movement library is in `animations/Pip-movements.blend`; see `animations/README.md` for the seven scenes, controls and exports. The neutral file in `model/` remains the approved modelling baseline.
-
-## Rebuild
-
-Run Blender in background mode with `--python build_pip.py` from this directory. This regenerates the model and the four renders. The script currently selects Metal for rendering on this Mac.
-
-Primary identity reference: `references/pip-character-sheet.png`. Additional pose reference: `references/stretch-pose-reference.png`.
-
-## Seated movements
-
-`seated/Pip-seated-movements.blend` contains four chair-based loops: side reaches, gentle turns, shoulder rolls and seated breathing. `seated/Pip-seated-preview.mp4` shows them together. See `seated/README.md` for scene controls, individual clips and transparent exports.
-
-## Contributing
-
-Issues and pull requests are welcome. See [CONTRIBUTING.md](CONTRIBUTING.md) for setup, movement and character guidelines, and checks to run. Stretch is an early prototype; the first build targets Apple Silicon Macs.
-
-## Support
+Bug reports, thoughtful suggestions, movement ideas and new companions are welcome. Read the [contribution guide](CONTRIBUTING.md) for setup and checks, the [architecture guide](docs/ARCHITECTURE.md) for the code, or the [character guide](docs/CHARACTERS.md) for Pip’s assets.
 
 <!-- support:start -->
 Enjoying Stretch? A star, a useful bug report or a contribution helps it grow. Donations are never required.
@@ -67,4 +62,4 @@ Enjoying Stretch? A star, a useful bug report or a contribution helps it grow. D
 
 ## Licence
 
-Stretch is released under the [MIT licence](LICENSE), including the source code and included character models, animations and renders. Contributions are welcome under the same licence.
+[MIT](LICENSE) © 2026 Jack Robinson. The source code and included character models, animations and renders are available under the same licence.

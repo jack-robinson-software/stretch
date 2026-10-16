@@ -24,7 +24,7 @@ The browser preview at `mac-app/preview.html` can be opened directly. It demonst
 - Keep reminders optional, quiet and easy to dismiss. Preserve the seated flow for people who want to remain in their chair.
 - Keep app identity separate from character identity. Additional characters should come with their editable source assets and movement exports.
 - Ask in an issue before substantially changing Pip's approved appearance, the asset format or the app architecture.
-- For Blender and animation changes, include the authoring source and appropriate validation results. See `animations/README.md` and `seated/README.md`. Avoid committing local build products, caches or logs.
+- For Blender and animation changes, include the authoring source and appropriate validation results. See [the character guide](docs/CHARACTERS.md) and [tool index](tools/blender/README.md). Avoid committing local build products, review screenshots, caches or logs.
 - Only contribute code and assets you have permission to share under the project's MIT licence.
 
 ## Bugs and ideas
@@ -34,3 +34,7 @@ Open an issue with your macOS version, steps to reproduce, expected behaviour an
 ## Optional financial support
 
 Maintainers can enable Buy Me a Coffee using [the support setup guide](SUPPORT.md). Contributions and use of Stretch never require a donation.
+
+## Automated checks
+
+GitHub Actions builds the native app, runs its bundled self-test and verifies the ad-hoc signature on an Apple Silicon macOS runner. Before a pull request, run those same commands locally. See [the architecture guide](docs/ARCHITECTURE.md) for how the app fits together.

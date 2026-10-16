@@ -1,6 +1,6 @@
 # Pip — seated movement set
 
-Four new companion loops built around the approved Pip model, with a padded sage chair, bent knees and planted feet.
+Four seated companion loops built around Pip, with a padded sage chair, bent knees and planted feet.
 
 Open **Pip-seated-movements.blend**, choose a movement from Blender's Scene dropdown and press Space. Each scene has its own editable controls and actions. The standing movement project remains in `../animations/`.
 
@@ -23,7 +23,7 @@ Enable **Viewport Overlays → Extras** to see the control empties. Keys are den
 
 ## Source and checks
 
-Created with Blender 5.1.2. Source scripts are `../animate_seated.py`, `../render_motions.py`, `../assemble_seated.py` and `../encode_seated.py`. The shared renderer accepts `--library seated --clips Side-reaches,Gentle-turns,Shoulder-rolls,Seated-breathe`.
+Created with Blender 5.1.2. Source scripts are [`animate_seated.py`](../tools/blender/animate_seated.py), [`render_motions.py`](../tools/blender/render_motions.py), [`assemble_seated.py`](../tools/blender/assemble_seated.py) and [`encode_seated.py`](../tools/blender/encode_seated.py). The shared renderer accepts `--library seated --clips Side-reaches,Gentle-turns,Shoulder-rolls,Seated-breathe`.
 
 The Cycles/Metal renderer on this Mac required kernel optimisation and MetalRT to be disabled. The rendering script applies those settings for its process. Normal playback of the saved Blender scenes needs no script.
 

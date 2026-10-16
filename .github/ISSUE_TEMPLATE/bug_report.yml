@@ -1,0 +1,22 @@
+name: Bug report
+description: Help us understand something that went wrong.
+body:
+  - type: input
+    id: system
+    attributes:
+      label: Mac and macOS version
+      placeholder: Apple M2, macOS 15.5
+    validations:
+      required: true
+  - type: input
+    id: version
+    attributes:
+      label: Stretch version or commit
+      description: Include the commit if you built from source.
+  - type: textarea
+    id: reproduce
+    attributes:
+      label: What happened?
+      description: Include steps to reproduce, what you expected and what happened instead. Screenshots or a short recording can help.
+    validations:
+      required: true

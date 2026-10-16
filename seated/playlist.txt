@@ -1,4 +1,0 @@
-file 'Side-reaches/Pip-side-reaches.mp4'
-file 'Gentle-turns/Pip-gentle-turns.mp4'
-file 'Shoulder-rolls/Pip-shoulder-rolls.mp4'
-file 'Seated-breathe/Pip-seated-breathe.mp4'

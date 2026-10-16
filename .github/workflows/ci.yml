@@ -1,0 +1,33 @@
+name: Mac build
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: mac-build-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  build:
+    name: Build and self-test
+    runs-on: macos-15
+    timeout-minutes: 15
+    steps:
+      - name: Check out source
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          persist-credentials: false
+      - name: Check Python syntax
+        run: python3 -m compileall -q tools/blender scripts mac-app/*.py
+      - name: Build Stretch
+        run: ./mac-app/build.sh
+      - name: Run bundled self-test
+        run: ./mac-app/Stretch.app/Contents/MacOS/Stretch --self-test
+      - name: Verify local signature
+        run: codesign --verify --deep --strict mac-app/Stretch.app
