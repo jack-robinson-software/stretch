@@ -1,0 +1,8 @@
+* text=auto
+*.blend binary
+*.png binary
+*.webp binary
+*.mp4 binary
+*.sh text eol=lf
+*.swift text eol=lf
+*.py text eol=lf

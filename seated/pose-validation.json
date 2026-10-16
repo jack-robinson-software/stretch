@@ -1,0 +1,58 @@
+{
+  "Side-reaches": {
+    "loop": "matched",
+    "drivers": "valid",
+    "max_foot_drift": 0,
+    "max_chair_drift": 0,
+    "body_bottom_z": [
+      0.6421388841332812,
+      0.6500000357627869
+    ],
+    "seat_top_z": 0.67,
+    "max_arm_centerline_penetration": 0.026447614740391145,
+    "deep_arm_penetration_samples": 0,
+    "examples": []
+  },
+  "Gentle-turns": {
+    "loop": "matched",
+    "drivers": "valid",
+    "max_foot_drift": 0,
+    "max_chair_drift": 0,
+    "body_bottom_z": [
+      0.6497200488567358,
+      0.6497200488567358
+    ],
+    "seat_top_z": 0.67,
+    "max_arm_centerline_penetration": 0.034174033683484595,
+    "deep_arm_penetration_samples": 0,
+    "examples": []
+  },
+  "Shoulder-rolls": {
+    "loop": "matched",
+    "drivers": "valid",
+    "max_foot_drift": 0,
+    "max_chair_drift": 0,
+    "body_bottom_z": [
+      0.6497474180899333,
+      0.6500000357627869
+    ],
+    "seat_top_z": 0.67,
+    "max_arm_centerline_penetration": 0,
+    "deep_arm_penetration_samples": 0,
+    "examples": []
+  },
+  "Seated-breathe": {
+    "loop": "matched",
+    "drivers": "valid",
+    "max_foot_drift": 0,
+    "max_chair_drift": 0,
+    "body_bottom_z": [
+      0.6487400231599807,
+      0.6500000357627869
+    ],
+    "seat_top_z": 0.67,
+    "max_arm_centerline_penetration": 0,
+    "deep_arm_penetration_samples": 0,
+    "examples": []
+  }
+}

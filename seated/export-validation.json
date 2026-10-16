@@ -1,0 +1,40 @@
+{
+  "Side-reaches": {
+    "frames": 300,
+    "duration": "10.000000",
+    "format": "H.264 / yuv420p / 600x720 / 30 fps",
+    "decode": "pass",
+    "alpha": "RGBA PNG sequence verified"
+  },
+  "Gentle-turns": {
+    "frames": 240,
+    "duration": "8.000000",
+    "format": "H.264 / yuv420p / 600x720 / 30 fps",
+    "decode": "pass",
+    "alpha": "RGBA PNG sequence verified"
+  },
+  "Shoulder-rolls": {
+    "frames": 180,
+    "duration": "6.000000",
+    "format": "H.264 / yuv420p / 600x720 / 30 fps",
+    "decode": "pass",
+    "alpha": "RGBA PNG sequence verified"
+  },
+  "Seated-breathe": {
+    "frames": 240,
+    "duration": "8.000000",
+    "format": "H.264 / yuv420p / 600x720 / 30 fps",
+    "decode": "pass",
+    "alpha": "RGBA PNG sequence verified"
+  },
+  "Pip-seated-preview.mp4": {
+    "frames": 960,
+    "duration": "32.000000",
+    "decode": "pass"
+  },
+  "Pip-seated-side-reaches-two-loops.mp4": {
+    "frames": 600,
+    "duration": "20.000000",
+    "decode": "pass"
+  }
+}

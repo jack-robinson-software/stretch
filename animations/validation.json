@@ -1,0 +1,58 @@
+{
+  "Idle": {
+    "errors": [],
+    "max_control_step": 0.0003153537950371527,
+    "centerline_penetration_count": 0,
+    "max_penetration": 0.011589250181714306,
+    "examples": [],
+    "frames": 180
+  },
+  "Stretch": {
+    "errors": [],
+    "max_control_step": 0.09020967569304536,
+    "centerline_penetration_count": 0,
+    "max_penetration": 0.026439570884576824,
+    "examples": [],
+    "frames": 300
+  },
+  "Breathe": {
+    "errors": [],
+    "max_control_step": 0.0489468677440916,
+    "centerline_penetration_count": 0,
+    "max_penetration": 0.011586375265324023,
+    "examples": [],
+    "frames": 240
+  },
+  "Wave": {
+    "errors": [],
+    "max_control_step": 0.11262246211667801,
+    "centerline_penetration_count": 0,
+    "max_penetration": 0.011586375265324023,
+    "examples": [],
+    "frames": 120
+  },
+  "Celebrate": {
+    "errors": [],
+    "max_control_step": 0.14725904622978125,
+    "centerline_penetration_count": 0,
+    "max_penetration": 0.011586375265324023,
+    "examples": [],
+    "frames": 90
+  },
+  "Walk-off": {
+    "errors": [],
+    "max_control_step": 0.1347736515265519,
+    "centerline_penetration_count": 0,
+    "max_penetration": 0.012074092031980399,
+    "examples": [],
+    "frames": 165
+  },
+  "Walk-back": {
+    "errors": [],
+    "max_control_step": 0.19771222855324286,
+    "centerline_penetration_count": 0,
+    "max_penetration": 0.012074091997192227,
+    "examples": [],
+    "frames": 165
+  }
+}

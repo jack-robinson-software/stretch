@@ -1,0 +1,13 @@
+# Local caches and build output
+.DS_Store
+__pycache__/
+*.py[cod]
+*.log
+*.blend[0-9]
+.venv/
+mac-app/Pip.app/Contents/MacOS/
+mac-app/Pip.app/Contents/_CodeSignature/
+# Local credentials and environment
+.env
+.env.*
+!.env.example

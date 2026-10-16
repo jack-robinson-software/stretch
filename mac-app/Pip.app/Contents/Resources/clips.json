@@ -1,0 +1,42 @@
+{
+  "idle": {
+    "frames": 180,
+    "fps": 30
+  },
+  "wave": {
+    "frames": 120,
+    "fps": 30
+  },
+  "stretch": {
+    "frames": 300,
+    "fps": 30
+  },
+  "breathe": {
+    "frames": 240,
+    "fps": 30
+  },
+  "celebrate": {
+    "frames": 90,
+    "fps": 30
+  },
+  "walkOff": {
+    "frames": 165,
+    "fps": 30
+  },
+  "seatedReach": {
+    "frames": 300,
+    "fps": 30
+  },
+  "seatedTurn": {
+    "frames": 240,
+    "fps": 30
+  },
+  "seatedShoulders": {
+    "frames": 180,
+    "fps": 30
+  },
+  "seatedBreathe": {
+    "frames": 240,
+    "fps": 30
+  }
+}

@@ -1,0 +1,17 @@
+{
+  "Stretch": {
+    "max_stance_step_drift": 0,
+    "lowest_sole_z": 0.0,
+    "penetration_below_2cm": []
+  },
+  "Walk-off": {
+    "max_stance_step_drift": 2.9802322387695312e-08,
+    "lowest_sole_z": -0.00025854692857774086,
+    "penetration_below_2cm": []
+  },
+  "Walk-back": {
+    "max_stance_step_drift": 2.1073424255447017e-07,
+    "lowest_sole_z": -0.00025854692857774086,
+    "penetration_below_2cm": []
+  }
+}

@@ -1,0 +1,4 @@
+file '/Users/jackrobinson/Code/Pip-Rebuild/seated/Side-reaches/Pip-side-reaches.mp4'
+file '/Users/jackrobinson/Code/Pip-Rebuild/seated/Gentle-turns/Pip-gentle-turns.mp4'
+file '/Users/jackrobinson/Code/Pip-Rebuild/seated/Shoulder-rolls/Pip-shoulder-rolls.mp4'
+file '/Users/jackrobinson/Code/Pip-Rebuild/seated/Seated-breathe/Pip-seated-breathe.mp4'
